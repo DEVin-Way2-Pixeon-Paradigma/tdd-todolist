@@ -20,7 +20,7 @@ const Todo = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-label="Formulário de Todo">
         <input 
           type="text"
           placeholder='Fazer compras'
@@ -31,11 +31,12 @@ const Todo = () => {
       </form>
 
       <h2>Lista de Tarefas</h2>
-      <ul>
+      <ul data-testid="ul-todos">
         {todoList.map(todoItem => (
           <li key={todoItem}>
             {todoItem} {" "}
-            <button type='button' onClick={() => handleDelete(todoItem)}>Remover</button>
+            <button type='button' data-testid={`${todoItem}-btn-delete`} 
+              onClick={() => handleDelete(todoItem)}>Remover</button>
           </li>
         ))}
       </ul>
